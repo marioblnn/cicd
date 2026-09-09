@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -92,7 +93,7 @@ func main() {
 	srv := &http.Server{
 		Addr:              ":" + port,
 		Handler:           router,
-		ReadHeaderTimeout: 5 * 60,
+		ReadHeaderTimeout: time.Minute,
 	}
 	sanitizedPort := strings.ReplaceAll(port, "\n", "")
 	sanitizedPort = strings.ReplaceAll(sanitizedPort, "\r", "")
